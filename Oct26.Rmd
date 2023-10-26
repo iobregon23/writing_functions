@@ -1,0 +1,61 @@
+---
+title: "Oct26"
+author: "Ixtaccihuatl Obregon"
+date: "`r Sys.Date()`"
+output: github_document
+---
+
+```{r}
+library(tidyverse)
+library(rvest)
+```
+
+Start with code you've written outside for your function 
+
+```{r}
+x_vec = rnorm(25, mean = 5, sd = 3)
+
+(x_vec - mean(x_vec)) / sd(x_vec)
+```
+
+Writing a function!
+
+```{r}
+z_scores = function(x) {
+  if(!is.numeric(x)){
+    stop("Argument x should be numeric")
+  }else if (length(x) == 1){
+    stop("Z score cannot be computed for length 1 vectors")
+  }
+  z = (x - mean(x)) / sd(x)
+  z
+}
+
+z_scores(x_vec)
+```
+
+```{r, eval=FALSE}
+z_scores(x = 3)
+
+z_scores("my name is ixta")
+
+z_scores(iris)
+
+z_scores(sample(c(TRUE, FALSE), 25, replace = TRUE))
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
