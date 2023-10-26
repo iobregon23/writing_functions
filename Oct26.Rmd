@@ -45,7 +45,50 @@ z_scores(sample(c(TRUE, FALSE), 25, replace = TRUE))
 
 ```
 
+```{r}
+mean_and_sd = function(x) {
+  
+  if (!is.numeric(x)) {
+    stop("Argument x should be numeric")
+  } else if (length(x) == 1) {
+    stop("Cannot be computed for length 1 vectors")
+  }
+  
+  mean_x = mean(x)
+  sd_x = sd(x)
 
+  list(mean = mean_x, 
+       sd = sd_x)
+}
+
+mean_and_sd(x_vec)
+```
+
+## Start getting means and stds
+
+```{r}
+x_vec = rnorm(n = 30, mean = 5, sd = 0.5)
+
+tibble(
+  mean = mean(x_vec), 
+  sd = sd(x_vec)
+)
+```
+
+Write a function that uses 'n', a true mean, and true SD as inputs. 
+
+```{r}
+sim_mean_sd = function(n_obs, mu, sigma){
+  x_vec = rnorm(n = n_obs, mean = mu, sd = sigma)
+
+  tibble(
+  mean = mean(x_vec), 
+  sd = sd(x_vec)
+)
+}
+
+sim_mean_sd(n_obs = 30, mu = 5, sigma = 0.5)
+```
 
 
 
